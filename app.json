@@ -1,0 +1,50 @@
+{
+  "pages":[
+    "pages/community/community",
+    "pages/searchDetail/searchDetail",
+    "pages/addressList1/addressList1",
+    "pages/addressList2/addressList2",
+    "pages/searchEverything/searchEverything",
+    "pages/createAddressList/createAddressList",
+    "pages/peoplePage/peoplePage",
+    "pages/messagePage/messagePage",
+    "pages/sendMessage/sendMessage",
+    "pages/news/news",
+    "pages/myInfo/myInfo",
+    "pages/setting/setting"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "text": "发现",
+        "pagePath": "pages/community/community",
+        "iconPath": "images/tab/discover.png",
+        "selectedIconPath": "images/tab/discover_selected.png"
+      },
+      {
+        "text": "通讯录",
+        "pagePath": "pages/addressList1/addressList1",
+        "iconPath": "images/tab/list.png",
+        "selectedIconPath": "images/tab/list_selected.png"
+      },
+      {
+        "text": "通知",
+        "pagePath": "pages/news/news",
+        "iconPath": "images/tab/news.png",
+        "selectedIconPath": "images/tab/news_selected.png"
+      },
+      {
+        "text": "我",
+        "pagePath": "pages/myInfo/myInfo",
+        "iconPath": "images/tab/me.png",
+        "selectedIconPath": "images/tab/me_selected.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1296db",
+    "navigationBarTitleText": "群通讯录",
+    "navigationBarTextStyle": "black"
+  }
+}
