@@ -1,2 +1,4 @@
 <!--pages/community/community.wxml-->
-<text>pages/community/community.wxml</text>
+<view>
+  <text>pages/community/community.wxml</text>
+</view>

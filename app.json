@@ -2,13 +2,13 @@
   "pages":[
     "pages/community/community",
     "pages/searchDetail/searchDetail",
+    "pages/searchEverything/searchEverything",
+    "pages/sendMessage/sendMessage",
     "pages/addressList1/addressList1",
     "pages/addressList2/addressList2",
-    "pages/searchEverything/searchEverything",
     "pages/createAddressList/createAddressList",
     "pages/peoplePage/peoplePage",
     "pages/messagePage/messagePage",
-    "pages/sendMessage/sendMessage",
     "pages/news/news",
     "pages/myInfo/myInfo",
     "pages/setting/setting"
@@ -45,6 +45,13 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1296db",
     "navigationBarTitleText": "群通讯录",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f8f8f8"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
   }
 }

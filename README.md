@@ -15,3 +15,7 @@
 10. 通知页面：news————lht
 11. 我的信息：myInfo————gzy
 12. 设置：setting————gzy
+
+
+
+如何写自己的页面=>在app.json中调整pages中的顺序，将自己要写的页面地址排在首位
