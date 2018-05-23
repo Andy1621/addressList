@@ -7,6 +7,11 @@ Page({
   data: {
     list: [
       {
+        // id: 'card_holder',
+        // name: '名片夹',
+        // open: false,
+        // subName: ['火警', '盗警', '急救'],
+        // phone: ['119', '110', '120']
         id: 'card_holder',
         name: '名片夹',
         open: false,
@@ -38,6 +43,30 @@ Page({
     this.setData({
       list: list
     });
+  },
+  fLongpress:function(e){
+    var that=this;
+    var id = e.currentTarget.dataset.id
+    var index = e.currentTarget.dataset.index, list = this.data.list;
+    for (var i = 0, len = list.length; i < len; ++i) {
+      if (list[i].id == id) {
+        wx.showModal({
+          title: '提示',
+          content: '确定要删除此名片吗？',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('点击确定了');
+            } else if (res.cancel) {
+              console.log('点击取消了');
+              return false;
+            }
+            that.setData({
+              list:list
+            });
+          }
+       })
+      }
+    }
   },
   /**
    * 生命周期函数--监听页面加载

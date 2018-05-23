@@ -5,7 +5,46 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    list:[
+      {
+        id: 0,
+        title: "消息1",
+        content: "消息1内容",
+        date: "2018.5.23",
+        othermsg: "点击查看详情",
+      },
+      {
+        id: 1,
+        title: "消息2",
+        content: "消息2内容",
+        date: "2018.5.23",
+        othermsg: "点击查看详情",
+      },
+      {
+        id: 2,
+        title: "消息3",
+        content: "消息3内容",
+        date: "2018.5.23",
+        othermsg: "点击查看详情",
+      },
+      {
+        id: 3,
+        title: "消息4",
+        content: "消息4内容",
+        date: "2018.5.23",
+        othermsg: "点击查看详情",
+      },
+    ]
+  },
+  newsLongpress: function () {
+    wx.showActionSheet({
+      itemList: ['删除', '清空'],
+      success: function (res) {
+        if (!res.cancel) {
+          console.log(res.tapIndex)
+        }
+      }
+    });
   },
 
   /**
