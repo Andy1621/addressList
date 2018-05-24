@@ -1,9 +1,4 @@
 //peoplePage.js
-var qcloud = require('../../vendor/wafer2-client-sdk/index')
-var config = require('../../config')
-var util = require('../../utils/util.js')
-var sliderWidth = 200; // 需要设置slider的宽度，用于计算中间位置
-
 Page({
     data: {
         userInfo: {},
@@ -101,32 +96,31 @@ Page({
         })
     },
 
-    //下拉刷新
     onPullDownRefresh: function () {
-        wx.showNavigationBarLoading() //在标题栏中显示加载
-        // wx.request({
-        //     url: 'https://URL',
-        //     data: {},
-        //     method: 'GET',
-        //     // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        //     // header: {}, // 设置请求的 header
-        //     success: function (res) {
-        //         // success
-        //     },
-        //     fail: function () {
-        //         // fail
-        //     },
-        //     complete: function () {
-        //         // complete
-        //         wx.hideNavigationBarLoading() //完成停止加载
-        //         wx.stopPullDownRefresh() //停止下拉刷新
-        //     },
-        // })
-        //模拟加载
-        setTimeout(function () {
-            // complete
-            wx.hideNavigationBarLoading() //完成停止加载
-            wx.stopPullDownRefresh() //停止下拉刷新
-        }, 1500);
+      wx.showNavigationBarLoading() //在标题栏中显示加载
+      // wx.request({
+      //     url: 'https://URL',
+      //     data: {},
+      //     method: 'GET',
+      //     // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      //     // header: {}, // 设置请求的 header
+      //     success: function (res) {
+      //         // success
+      //     },
+      //     fail: function () {
+      //         // fail
+      //     },
+      //     complete: function () {
+      //         // complete
+      //         wx.hideNavigationBarLoading() //完成停止加载
+      //         wx.stopPullDownRefresh() //停止下拉刷新
+      //     },
+      // })
+      //模拟加载
+      setTimeout(function () {
+        // complete
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
+      }, 1500);
     },
 })

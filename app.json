@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/peoplePage/peoplePage",
     "pages/community/community",
     "pages/searchDetail/searchDetail",
     "pages/searchEverything/searchEverything",
@@ -7,7 +8,6 @@
     "pages/addressList1/addressList1",
     "pages/addressList2/addressList2",
     "pages/createAddressList/createAddressList",
-    "pages/peoplePage/peoplePage",
     "pages/messagePage/messagePage",
     "pages/news/news",
     "pages/myInfo/myInfo",
@@ -47,7 +47,7 @@
     "navigationBarTitleText": "群通讯录",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f8f8f8",
-    "enablePullDownRefresh":true
+    "enablePullDownRefresh": true
   },
   "networkTimeout": {
     "request": 10000,

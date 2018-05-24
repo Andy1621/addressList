@@ -63,7 +63,7 @@ Page({
   onShareAppMessage: function () {
   
   },
-  suo: function (e) {
+  search: function (e) {
     wx.navigateTo({
       url: '../searchDetail/searchDetail',
     })
