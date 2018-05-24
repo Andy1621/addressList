@@ -46,7 +46,8 @@
     "navigationBarBackgroundColor": "#1296db",
     "navigationBarTitleText": "群通讯录",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#f8f8f8"
+    "backgroundColor": "#f8f8f8",
+    "enablePullDownRefresh":true
   },
   "networkTimeout": {
     "request": 10000,
