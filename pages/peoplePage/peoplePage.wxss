@@ -410,22 +410,24 @@ page {
 .input_null{
     color: #C9C9C9;
 }
+
 .release{
     display: flex;
     align-items: flex-end; /*底部对齐*/
     justify-content: space-between; /*两端对齐*/
-    box-sizing: border-box;
+    box-sizing: border-box; 
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 18rpx 0 18rpx 30rpx;
+    padding: 18rpx 10rpx 18rpx 30rpx;
     background-color: #F7F8F7;
     font-size: 28rpx;
     z-index: 999;
 }
+
 .release .text{
-    width: 604rpx;
+    width: 100%;
     min-height: 34rpx;
     max-height: 102rpx; /*最多显示三行*/
     border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/
@@ -435,11 +437,89 @@ page {
     font-size: 28rpx;
     background-color: #ffffff;
     border-radius: 4rpx;
+    text-align: left;
 }
+
+.release .msgTo{
+    width: 116rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    text-align: center;
+    color: #1296db;
+    font-size: 15px;
+    margin-right: 10px;
+}
+
 .release .submit{
     width: 116rpx;
     height: 64rpx;
     line-height: 64rpx;
     text-align: center;
-    color: #66CC00;
+    color: #1296db;
+    font-size: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom:5px;
+    border-left: 1rpx, solid, #222;
+}
+
+.release .divide{
+    color: #1296db;
+    background-color: #1296db; 
+    height: 30px;
+    width: 2px;
+    margin-bottom:5px;
+}
+
+.msgReply{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    padding-left: 5%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.mesreplytime{
+    color: #9b9b9b;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.replyimage{
+    margin-right:0px;
+    width:35px;
+    height:30px;
+    line-height:30px;
+    text-align:left;
+}
+
+.replyName{
+    font-size: 15px;
+}
+
+.nameAndtime{
+    margin-right: 10px;
+    text-align: center;
+}
+
+.replytext{
+    font-size: 13px;
+    color: #9b9b9b;
+}
+
+/*Button*/
+.button-sp-area{
+    margin: 0 auto;
+    padding-top: 15px;
+    width: 60%;
+}
+.mini-btn{
+    margin-right: 3px;
+}
+
+.weui-btn{
+    margin-top:15px;
 }

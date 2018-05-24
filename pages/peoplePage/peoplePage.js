@@ -5,273 +5,128 @@ var util = require('../../utils/util.js')
 var sliderWidth = 200; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
-  data: {
-    userInfo: {},
-    logged: false,
-    takeSession: false,
-    requestResult: '',
-    //SearchBar
-    inputShowed: false,
-    inputVal: "",
-    //navbar
-    tabs: ["通讯录", "消息"],
-    activeIndex: 0,
-    sliderOffset: 0,
-    sliderLeft: 0,
-    peopleShow: 1,
-    releaseFocus: false,
-  },
+    data: {
+        userInfo: {},
+        logged: false,
+        takeSession: false,
+        requestResult: '',
+        //SearchBar
+        inputShowed: false,
+        inputVal: "",
+        //navbar
+        tabs: ["通讯录", "消息"],
+        activeIndex: 0,
+        sliderOffset: 0,
+        sliderLeft: 0,
+        peopleShow: 1,
+        releaseFocus: false,
+        messageVal:"",
+        msgName:"Tom",
+        msgCount: 0,
+    },
 
 //Search Bar
-  showInput: function () {
-    this.setData({
-      inputShowed: true,
-      //peopleShow: 0
-    });
-  },
-  hideInput: function () {
-    this.setData({
-      inputVal: "",
-      inputShowed: false,
-      peopleShow: 1
-    });
-  },
-  clearInput: function () {
-    this.setData({
-      inputVal: ""
-    });
-  },
-  inputTyping: function (e) {
-    this.setData({
-      inputVal: e.detail.value,
-    });
-    if(this.data.inputVal==""){
-        this.setData({ peopleShow: 1 });
-    }
-    else{
-        this.setData({ peopleShow: 0 });
-    }
-  },
+    showInput: function () {
+        this.setData({
+            inputShowed: true,
+            //peopleShow: 0
+        });
+    },
+    hideInput: function () {
+        this.setData({
+            inputVal: "",
+            inputShowed: false,
+            peopleShow: 1
+        });
+    },
 
-  //navbar
-  tabClick: function (e) {
-      this.setData({
-          sliderOffset: e.currentTarget.offsetLeft,
-          activeIndex: e.currentTarget.id
-      });
-  },
+    clearInput: function () {
+        this.setData({
+            inputVal: "",
+            peopleShow:true,
+        });
+    },
 
-  //Reply
-  bindReply: function (e) {
-      this.setData({
-          releaseFocus: true
-      })
-  },
-
-  // 用户登录示例
-  login: function () {
-    if (this.data.logged) return
-
-    util.showBusy('正在登录')
-    var that = this
-
-    // 调用登录接口
-    qcloud.login({
-      success(result) {
-        if (result) {
-          util.showSuccess('登录成功')
-          that.setData({
-            userInfo: result,
-            logged: true
-          })
-        } else {
-          // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
-          qcloud.request({
-            url: config.service.requestUrl,
-            login: true,
-            success(result) {
-              util.showSuccess('登录成功')
-              that.setData({
-                userInfo: result.data.data,
-                logged: true
-              })
-            },
-
-            fail(error) {
-              util.showModel('请求失败', error)
-              console.log('request fail', error)
-            }
-          })
+    inputTyping: function (e) {
+        this.setData({
+            inputVal: e.detail.value,
+        });
+        if(this.data.inputVal==""){
+            this.setData({ peopleShow: 1 });
         }
-      },
+        else{
+            this.setData({ peopleShow: 0 });
+        }
+    },
 
-      fail(error) {
-        util.showModel('登录失败', error)
-        console.log('登录失败', error)
-      }
-    })
-  },
+//navbar
+    tabClick: function (e) {
+        this.setData({
+            sliderOffset: e.currentTarget.offsetLeft,
+            activeIndex: e.currentTarget.id,
+            releaseFocus:false,
+        });
+    },
 
-  // 切换是否带有登录态
-  switchRequestMode: function (e) {
-    this.setData({
-      takeSession: e.detail.value
-    })
-    this.doRequest()
-  },
+    clickView: function (e) {
+        if(this.data.releaseFocus==true){
+            this.setData({
+                releaseFocus:false,
+                messageVal:""
+            });
+        }
+    },
 
-  doRequest: function () {
-    util.showBusy('请求中...')
-    var that = this
-    var options = {
-      url: config.service.requestUrl,
-      login: true,
-      success(result) {
-        util.showSuccess('请求成功完成')
-        console.log('request success', result)
-        that.setData({
-          requestResult: JSON.stringify(result.data)
+//Reply
+    bindReply: function (e) {
+        this.setData({
+            releaseFocus: true,
+            messageVal:""
+
         })
-      },
-      fail(error) {
-        util.showModel('请求失败', error);
-        console.log('request fail', error);
-      }
-    }
-    if (this.data.takeSession) {  // 使用 qcloud.request 带登录态登录
-      qcloud.request(options)
-    } else {    // 使用 wx.request 则不带登录态
-      wx.request(options)
-    }
-  },
+    },
 
-  // 上传图片接口
-  doUpload: function () {
-    var that = this
-
-    // 选择图片
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        util.showBusy('正在上传')
-        var filePath = res.tempFilePaths[0]
-
-        // 上传图片
-        wx.uploadFile({
-          url: config.service.uploadUrl,
-          filePath: filePath,
-          name: 'file',
-
-          success: function (res) {
-            util.showSuccess('上传图片成功')
-            console.log(res)
-            res = JSON.parse(res.data)
-            console.log(res)
-            that.setData({
-              imgUrl: res.data.imgUrl
-            })
-          },
-
-          fail: function (e) {
-            util.showModel('上传图片失败')
-          }
+    bindSend: function (e) {
+        this.setData({
+            releaseFocus: false,
+            messageVal:"",
+            msgCount:this.data.msgCount+1,
         })
+    },
 
-      },
-      fail: function (e) {
-        console.error(e)
-      }
-    })
-  },
+    bindCancel: function (e) {
+        this.setData({
+            releaseFocus: false,
+            messageVal:""
+        })
+    },
 
-  // 预览图片
-  previewImg: function () {
-    wx.previewImage({
-      current: this.data.imgUrl,
-      urls: [this.data.imgUrl]
-    })
-  },
-
-  // 切换信道的按钮
-  switchChange: function (e) {
-    var checked = e.detail.value
-
-    if (checked) {
-      this.openTunnel()
-    } else {
-      this.closeTunnel()
-    }
-  },
-
-  openTunnel: function () {
-    util.showBusy('信道连接中...')
-    // 创建信道，需要给定后台服务地址
-    var tunnel = this.tunnel = new qcloud.Tunnel(config.service.tunnelUrl)
-
-    // 监听信道内置消息，包括 connect/close/reconnecting/reconnect/error
-    tunnel.on('connect', () => {
-      util.showSuccess('信道已连接')
-      console.log('WebSocket 信道已连接')
-      this.setData({ tunnelStatus: 'connected' })
-    })
-
-    tunnel.on('close', () => {
-      util.showSuccess('信道已断开')
-      console.log('WebSocket 信道已断开')
-      this.setData({ tunnelStatus: 'closed' })
-    })
-
-    tunnel.on('reconnecting', () => {
-      console.log('WebSocket 信道正在重连...')
-      util.showBusy('正在重连')
-    })
-
-    tunnel.on('reconnect', () => {
-      console.log('WebSocket 信道重连成功')
-      util.showSuccess('重连成功')
-    })
-
-    tunnel.on('error', error => {
-      util.showModel('信道发生错误', error)
-      console.error('信道发生错误：', error)
-    })
-
-    // 监听自定义消息（服务器进行推送）
-    tunnel.on('speak', speak => {
-      util.showModel('信道消息', speak)
-      console.log('收到说话消息：', speak)
-    })
-
-    // 打开信道
-    tunnel.open()
-
-    this.setData({ tunnelStatus: 'connecting' })
-  },
-
-  /**
-   * 点击「发送消息」按钮，测试使用信道发送消息
-   */
-  sendMessage() {
-    if (!this.data.tunnelStatus || !this.data.tunnelStatus === 'connected') return
-    // 使用 tunnel.isActive() 来检测当前信道是否处于可用状态
-    if (this.tunnel && this.tunnel.isActive()) {
-      // 使用信道给服务器推送「speak」消息
-      this.tunnel.emit('speak', {
-        'word': 'I say something at ' + new Date(),
-      });
-    }
-  },
-
-  /**
-   * 点击「关闭信道」按钮，关闭已经打开的信道
-   */
-  closeTunnel() {
-    if (this.tunnel) {
-      this.tunnel.close();
-    }
-    util.showBusy('信道连接中...')
-    this.setData({ tunnelStatus: 'closed' })
-  }
+    //下拉刷新
+    onPullDownRefresh: function () {
+        wx.showNavigationBarLoading() //在标题栏中显示加载
+        // wx.request({
+        //     url: 'https://URL',
+        //     data: {},
+        //     method: 'GET',
+        //     // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        //     // header: {}, // 设置请求的 header
+        //     success: function (res) {
+        //         // success
+        //     },
+        //     fail: function () {
+        //         // fail
+        //     },
+        //     complete: function () {
+        //         // complete
+        //         wx.hideNavigationBarLoading() //完成停止加载
+        //         wx.stopPullDownRefresh() //停止下拉刷新
+        //     },
+        // })
+        //模拟加载
+        setTimeout(function () {
+            // complete
+            wx.hideNavigationBarLoading() //完成停止加载
+            wx.stopPullDownRefresh() //停止下拉刷新
+        }, 1500);
+    },
 })
