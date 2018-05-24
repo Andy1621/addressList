@@ -1,5 +1,5 @@
 <!--peoplePage.wxml-->
-<view class="container">
+<view class="page">
     <!--Information-->
     <view class="userinfo"  bindtouchstart="clickView"><!--bindtap="login"-->
         <text class='userinfo-addressListName'>{{'addressListName'}}</text>
