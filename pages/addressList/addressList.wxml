@@ -1,0 +1,81 @@
+<!--pages/addressList/addressList.wxml-->
+<view class="weui-search-bar">
+    <view class="weui-search-bar__form" bindtap="search">
+        <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="weui-search-bar__input"/>
+        </view>
+        <label class="weui-search-bar__label">
+            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <view class="weui-search-bar__text">搜索</view>
+        </label>
+    </view>
+</view>
+
+<view class="navbar">
+  <text 
+  wx:for="{{navbar}}" 
+  data-idx="{{index}}" 
+  class="item {{currentTab==index ? 'active' : ''}}"
+  wx:key="unique"
+  bindtap="navbarTap">{{item}}</text>
+</view>
+
+<swiper
+current="{{currentTab}}"
+class="swiper-box"
+duration="100"
+style="height: 1120rpx"
+bindchange="trendsSwiperChange">
+  <swiper-item>
+  <view class="body">
+    <view class="widgets">
+      <block wx:for-items="{{list1}}">
+        <view class="widgets__item">
+          <view id="{{item.id}}" class="widgets__info {{item.open ? 'widgets__info_show' : ''}}" bindtap="widgetsToggle1">
+            <text class="widgets__info-name">{{item.name}}</text>
+            <image class="widgets__info-img" src="/images/addressList/arrowright.png" mode="aspectFill" />
+          </view>
+          <view class="widgets__list {{item.open ? 'widgets__list_show' : ''}}">
+            <block wx:for-items="{{item.subName}}" wx:for-item="name">
+              <button class="widget" data-phone="{{item.phone[index]}}" bindlongpress='fLongpress1'  hover-start-time="10" hover-stay-time="100" hover-class="other-button-hover" data-index='{{index}}' data-id = '{{item.id}}'>
+              <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">{{name}}</view>
+                    <view class="weui-media-box__desc">{{item.phone[index]}}</view>
+                </view>
+                <view class="widget__line {{index == 0 ? 'widget__line_first' : ''}}"></view>
+              </button>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  </swiper-item>
+  <swiper-item>
+      <view class="widgets">
+        <button class="weui-btn" type="default" bindtap="jumpToCreate">创建通讯录</button>
+        <scroll-view class="body" scroll-y="true" style="height: 500px">
+          <block wx:for-items="{{list2}}">
+            <view class="widgets__item">
+              <view id="{{item.id}}" class="widgets__info {{item.open ? 'widgets__info_show' : ''}}" bindtap="widgetsToggle2">
+                <text class="widgets__info-name">{{item.name}}</text>
+                <image class="widgets__info-img" src="/images/addressList/arrowright.png" mode="aspectFill" />
+              </view>
+              <view class="widgets__list {{item.open ? 'widgets__list_show' : ''}}">
+                <block wx:for-items="{{item.subName}}" wx:for-item="name">
+                  <button class="widget" data-phone="{{item.phone[index]}}" bindlongpress='fLongpress2'  hover-start-time="10" hover-stay-time="100" hover-class="other-button-hover" data-index='{{index}}' data-id = '{{item.id}}'>
+                  <view class="weui-media-box weui-media-box_text">
+                        <view class="weui-media-box__title weui-media-box__title_in-text">{{name}}</view>
+                        <view class="weui-media-box__desc">{{item.phone[index]}}</view>
+                    </view>
+                    <view class="widget__line {{index == 0 ? 'widget__line_first' : ''}}"></view>
+                  </button>
+                </block>
+              </view>
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+  </swiper-item>
+</swiper>

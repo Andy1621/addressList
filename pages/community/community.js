@@ -12,7 +12,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      //设置图片地址
+      list: "/images/tab/list.png"
+    });
   },
 
   /**
@@ -67,6 +70,5 @@ Page({
     wx.navigateTo({
       url: '../searchDetail/searchDetail',
     })
-  }
-  
+  },
 })
