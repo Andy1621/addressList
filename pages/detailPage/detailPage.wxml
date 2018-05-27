@@ -214,6 +214,9 @@
                             <button class="weui-btn mini-btn" type="default" size="mini" bindtap="bindReply">留言</button>
                         </view>
                     </view>
+                  <view class='bottom'>
+                      <button class='mybtn' form-type='submit' bindtap='sendMessage'>发布</button>
+                  </view>
                 </view>
             </view>
         </view>

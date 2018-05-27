@@ -12,6 +12,7 @@
     "pages/setting/setting"
   ],
   "tabBar": {
+    "selectedColor":"#1296db",
     "list": [
       {
         "text": "发现",

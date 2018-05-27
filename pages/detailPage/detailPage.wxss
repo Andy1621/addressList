@@ -524,3 +524,15 @@ page {
 .weui-btn{
     margin-top:15px;
 }
+
+.bottom{
+    position:fixed;
+    bottom: 100rpx;
+    right: 30rpx;
+    border-radius: 50%;
+}
+
+.mybtn{
+    background-color: #1296db;
+    color: white;
+}

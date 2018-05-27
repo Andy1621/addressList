@@ -123,4 +123,10 @@ Page({
         wx.stopPullDownRefresh() //停止下拉刷新
       }, 1500);
     },
+  //sendMessage
+    sendMessage: function() {
+      wx.navigateTo({
+        url: '/pages/sendMessage/sendMessage',
+      })
+    },
 })
