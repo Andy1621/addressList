@@ -143,3 +143,18 @@ background: #e60012;
 .other-button-hover {
   background-color: #1aac19;
 }
+
+.top {
+  position:fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+}
+
+.list {
+    padding-bottom: 40px;
+    position:fixed;
+    top: 180rpx;
+    width: 100%;
+    left: 0;
+}

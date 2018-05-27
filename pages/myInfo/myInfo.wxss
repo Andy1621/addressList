@@ -7,8 +7,10 @@
 }
 
 .middle__info {
-    margin-top: 260rpx;
-    position:relative;
+    position:fixed;
+    top: 260rpx;
+    left: 0;
+    width: 100%;
     overflow:hidden;
 }
 
