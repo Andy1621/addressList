@@ -42,11 +42,18 @@
               </view>
               <view class="widgets__list {{item.open ? 'widgets__list_show' : ''}}">
                 <block wx:for-items="{{item.subName}}" wx:for-item="name">
-                  <button class="widget" data-phone="{{item.phone[index]}}" bindlongpress='fLongpress1'  hover-start-time="10" hover-stay-time="100" hover-class="other-button-hover" data-index='{{index}}' data-id = '{{item.id}}'>
-                  <view class="weui-media-box weui-media-box_text">
-                        <view class="weui-media-box__title weui-media-box__title_in-text">{{name}}</view>
+                  <button class="widget" data-phone="{{item.phone[index]}}" bindlongpress='fLongpress1'  hover-start-time="10" hover-stay-time="100" hover-class="weui-cell_active" data-index='{{index}}' data-id = '{{item.id}}'>
+                  <view class="weui-media-box weui-media-box_appmsg">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{'/images/addressList/user-unlogin.png'}}" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">
+                            <view>{{name}}</view>
+                        </view>
                         <view class="weui-media-box__desc">{{item.phone[index]}}</view>
                     </view>
+                  </view>
                     <view class="widget__line {{index == 0 ? 'widget__line_first' : ''}}"></view>
                   </button>
                 </block>
@@ -69,11 +76,14 @@
                   </view>
                   <view class="widgets__list {{item.open ? 'widgets__list_show' : ''}}">
                     <block wx:for-items="{{item.subName}}" wx:for-item="name">
-                      <button class="widget" data-phone="{{item.phone[index]}}" bindlongpress='fLongpress2'  hover-start-time="10" hover-stay-time="100" hover-class="other-button-hover" data-index='{{index}}' data-id = '{{item.id}}'>
-                      <view class="weui-media-box weui-media-box_text">
-                            <view class="weui-media-box__title weui-media-box__title_in-text">{{name}}</view>
-                            <view class="weui-media-box__desc">{{item.phone[index]}}</view>
-                        </view>
+                      <button class="widget weui-media-box weui-media-box_appmsg" data-phone="{{item.phone[index]}}" bindlongpress='fLongpress2'  hover-start-time="10" hover-stay-time="100" hover-class="other-button-hover" data-index='{{index}}' data-id = '{{item.id}}'>
+                        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                              <image class="weui-media-box__thumb" src="/images/tab/list.png" />
+                          </view>
+                          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                              <view class="weui-media-box__title">{{name}}</view>
+                              <view class="weui-media-box__desc">{{item.phone[index]}}</view>
+                          </view>
                         <view class="widget__line {{index == 0 ? 'widget__line_first' : ''}}"></view>
                       </button>
                     </block>
