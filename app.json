@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/community/community",
     "pages/detailPage/detailPage",
     "pages/addressList/addressList",
@@ -10,9 +10,10 @@
     "pages/news/news",
     "pages/myInfo/myInfo",
     "pages/setting/setting"
+    
   ],
   "tabBar": {
-    "selectedColor":"#1296db",
+    "selectedColor": "#1296db",
     "list": [
       {
         "text": "发现",

@@ -50,6 +50,8 @@ Page({
     ],
     navbar: ['好友', '通讯录'], //选项卡 导航
     currentTab: 0,//选项卡 索引
+    rest_height1: 0,
+    rest_height2: 0
   },
   //展开按钮
   widgetsToggle1: function (e) {
@@ -174,7 +176,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('onLoad');
+    var that = this;
+    // 获取系统信息
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res);
+        // 可使用窗口宽度、高度
+        console.log('height=' + res.windowHeight);
+        console.log('width=' + res.windowWidth);
+        // 计算主体部分高度,单位为px
+        that.setData({
+          // rest部分高度 = 利用窗口可使用高度 - first部分高度（这里的高度单位为px，所有利用比例将260rpx转换为px）
+          rest_height1: res.windowHeight - res.windowWidth / 750 * 180,
+          rest_height2: res.windowHeight - res.windowWidth / 750 * 280
+        })
+      }
+    })
   },
 
   /**

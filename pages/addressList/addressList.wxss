@@ -57,7 +57,7 @@ background: #e60012;
 
 .desc {
   margin-top: 10rpx;
-  color: #888;
+  color: #888; 
   font-size: 28rpx;
 }
 
@@ -65,7 +65,7 @@ background: #e60012;
   background-color: #fff;
   overflow: hidden;
   border-radius: 4rpx;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .widgets__info {
@@ -94,12 +94,6 @@ background: #e60012;
 
 .widgets__list {
   display: none;
-}
-
-.widgets__list .phoneText {
-  float: right;
-  margin-right: 22px;
-  color: #515151;
 }
 
 .widgets__list_show {
@@ -140,12 +134,12 @@ background: #e60012;
 }
 /** 添加自定义button点击态样式类**/
 .other-button-hover {
-  background-color: #1aac19;
+  background-color: black;
 }
 
 .top {
   position:fixed;
-  top: 0;
+  top: 100;
   width: 100%;
   left: 0;
 }
@@ -195,4 +189,15 @@ background: #e60012;
     right:0;
     height:1px;
     color:#e5e5e5;
+}
+
+.test{
+  padding: 15px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
 }
