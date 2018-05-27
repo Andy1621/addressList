@@ -28,7 +28,7 @@ duration="100"
 style="height: 1120rpx"
 bindchange="trendsSwiperChange">
   <swiper-item>
-  <view class="body">
+  <scroll-view class="body" scroll-y="true" style="height: 500px">
     <view class="widgets">
       <block wx:for-items="{{list1}}">
         <view class="widgets__item">
@@ -50,8 +50,9 @@ bindchange="trendsSwiperChange">
         </view>
       </block>
     </view>
-  </view>
+  </scroll-view>
   </swiper-item>
+
   <swiper-item>
       <view class="widgets">
         <button class="weui-btn" type="default" bindtap="jumpToCreate">创建通讯录</button>
